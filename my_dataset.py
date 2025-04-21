@@ -24,12 +24,12 @@ class Payment():
 
 
         #Создаем функцию main
-        def main():
-            payment = Payment()
-            payment.sorting()
+    def main():
+        payment = Payment()
+        payment.sorting()
 
-        if __name__=="__main__":
-            main()
+    if __name__=="__main__":
+        main()
 
 
 

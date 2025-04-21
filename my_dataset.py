@@ -12,7 +12,7 @@ class Payment():
         print(filtered2_df)
         # Создали отдельный файл из отфильтрованного значения
         filtered1_df.to_csv('output.csv', index=False, encoding='utf-8')
-        filtered1_df.to_csv('output.csv', index=False, encoding='utf-8')
+        filtered2_df.to_csv('output.csv', index=False, encoding='utf-8')
 
 
 
@@ -22,7 +22,7 @@ class Payment():
         df.drop_duplicates()
         print('Количество повторяющихся строк в наборе:',num_duplicates)
 
-        
+
         #Создаем функцию main
         def main():
             payment = Payment()

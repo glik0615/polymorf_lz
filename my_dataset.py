@@ -1,35 +1,48 @@
+# Необходимо создать класс, который будет обрабатывать полученный 
+# датасет, разделять его на два датасета по признаку: "Место оплаты",
+# где деление происходит по Минску и остальным городам, и сохранять 
+# как два отдельных файла. Также необходимо реализовать полиморфизм 
+# любого оператора для удаления дубликатов в датасете и вывести количество
+# удаленных дубликатов 
+#============================================================================
+
+# Импорт необходимой библиотеки
 import pandas as pd
-class Payment():
+
+# Создание класса
+class Payment:
     def __init__(self):
         pass
-    def  sorting(self):
-        # Прочитали основной файл
+# Создание метода для обработки и фильтра данных файла
+    def sorting(self):
+        # Считывание основного файла
         df = pd.read_csv('var5.csv')
+        
         # Разделение датасета на два датасета по признаку
         filtered1_df = df[df['Место оплаты'] == 'Минск']
         filtered2_df = df[df['Место оплаты'] != 'Минск']
+        
+        # Выведение результата для проверки
         print(filtered1_df)
         print(filtered2_df)
-        # Создали отдельный файл из отфильтрованного значения
-        filtered1_df.to_csv('output.csv', index=False, encoding='utf-8')
-        filtered2_df.to_csv('output.csv', index=False, encoding='utf-8')
-
-
-
+        
+        # Создание отдельных файлов из отфильтрованных значений
+        filtered1_df.to_csv('output1.csv', index=False, encoding='utf-8')
+        filtered2_df.to_csv('output2.csv', index=False, encoding='utf-8')
+        
         # Создание полиморфизма унарного оператора для удаления дубликатов
-        #  и выведения количества удаленных дубликатов
-        num_duplicates = df.duplicated().sum
-        df.drop_duplicates()
-        print('Количество повторяющихся строк в наборе:',num_duplicates)
+        # и вывод количества удаленных дубликатов
+        num_duplicates = df.duplicated().sum()
+        df = df.drop_duplicates()
+        print('Количество повторяющихся строк в наборе:', num_duplicates)
 
+    # Создание функцие main
+def main():
+    pay = Payment()
+    pay.sorting()
 
-        #Создаем функцию main
-    def main():
-        payment = Payment()
-        payment.sorting()
-
-    if __name__=="__main__":
-        main()
+if __name__ == "__main__":
+    main()
 
 
 
